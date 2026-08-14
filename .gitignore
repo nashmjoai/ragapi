@@ -1,0 +1,12 @@
+﻿.env
+.env.*
+!.env.example
+venv/
+.venv/
+myenv/
+uploads/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+nltk_data/
