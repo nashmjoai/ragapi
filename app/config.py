@@ -39,11 +39,13 @@ def get_env_variable(
         if default_value is None and required:
             raise ValueError(f"Environment variable '{var_name}' not found.")
         return default_value
+    if isinstance(value, str):
+        value = value.strip('"\'')
     return value
 
 
-RAG_HOST = os.getenv("RAG_HOST", "0.0.0.0")
-RAG_PORT = int(os.getenv("RAG_PORT", 8000))
+RAG_HOST = os.getenv("RAG_HOST", "0.0.0.0").strip('"\'')
+RAG_PORT = int(str(os.getenv("PORT", os.getenv("RAG_PORT", "8000"))).strip('"\'')))
 
 RAG_UPLOAD_DIR = get_env_variable("RAG_UPLOAD_DIR", "./uploads/")
 if not os.path.exists(RAG_UPLOAD_DIR):
