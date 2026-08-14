@@ -82,7 +82,7 @@ def get_loader(
     filepath: str,
     raw_text: bool = False,
 ):
-    """Get the appropriate document loader based on file type and\or content type.
+    """Get the appropriate document loader based on file type and/or content type.
 
     When ``raw_text`` is True, text-formatted files (e.g. Markdown) are loaded
     verbatim with :class:`TextLoader` so their original formatting is
