@@ -104,4 +104,5 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host=RAG_HOST, port=RAG_PORT, log_config=None)
+    port = int(os.getenv(PORT, os.getenv(RAG_PORT, RAG_PORT)))
+uvicorn.run(app, host=RAG_HOST, port=port, log_config=None)
