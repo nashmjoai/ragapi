@@ -32,7 +32,12 @@ async def security_middleware(request: Request, call_next):
 
     token = authorization.split(" ")[1]
     try:
-        payload = jwt.decode(token, jwt_secret, algorithms=["HS256"])
+        payload = jwt.decode(
+            token,
+            jwt_secret,
+            algorithms=["HS256"],
+            options={"verify_iat": False, "verify_nbf": False, "verify_exp": False},
+        )
         exp_timestamp = payload.get("exp")
         if exp_timestamp and datetime.now(tz=timezone.utc) > datetime.fromtimestamp(
             exp_timestamp, tz=timezone.utc
